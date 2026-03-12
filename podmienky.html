@@ -1,0 +1,189 @@
+ <!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Súkromie | Meteo Počasie</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --accent: #60a5fa;
+            --bg: #0b1120;
+            --text: #f1f5f9;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animované pozadie */
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, #1e293b 0%, #0b1120 100%);
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px; height: 500px;
+            background: var(--primary);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float 20s infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 150px); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        header { text-align: center; margin-bottom: 50px; }
+        
+        .logo { font-size: 3rem; margin-bottom: 10px; display: block; }
+        
+        h1 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .date { color: #64748b; font-size: 0.9rem; margin-top: 10px; }
+
+        h2 { color: var(--accent); margin: 40px 0 20px; font-size: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; }
+        
+        p { margin-bottom: 15px; color: #cbd5e1; }
+
+        ul { margin-left: 20px; margin-bottom: 20px; color: #cbd5e1; }
+        li { margin-bottom: 8px; }
+
+        .card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary);
+        }
+
+        .contact-box {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+            border-radius: 20px;
+            margin-top: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover { background: var(--accent); transform: scale(1.05); }
+
+        footer { text-align: center; margin-top: 40px; color: #475569; font-size: 0.8rem; }
+
+        /* Responzivita */
+        @media (max-width: 768px) {
+            .container { margin: 15px; padding: 25px; }
+            h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-gradient">
+        <div class="blob" style="top: -10%; left: -10%;"></div>
+        <div class="blob" style="bottom: -10%; right: -10%; background: #4f46e5;"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <span class="logo">☁️</span>
+            <h1>Zásady ochrany osobných údajov</h1>
+            <p class="date">Posledná aktualizácia: 12. marec 2026</p>
+        </header>
+
+        <section>
+            <p>Súkromie používateľov aplikácie <strong>Meteo Počasie</strong> je pre nás prioritou. Tento dokument vysvetľuje, ako spracúvame vaše údaje a aké sú vaše práva.</p>
+
+            <h2>1. Zhromažďované údaje</h2>
+            <div class="card">
+                <p><strong>Údaje o polohe:</strong> Na poskytovanie presnej predpovede počasia pre vašu aktuálnu lokalitu vyžadujeme prístup k GPS súradniciam. Tieto údaje sú spracované len na účel predpovede.</p>
+                <p><strong>Diagnostické údaje:</strong> Automaticky zbierame informácie o type zariadenia, verzii operačného systému a IP adrese pre zabezpečenie stability aplikácie.</p>
+            </div>
+
+            <h2>2. Použitie údajov</h2>
+            <ul>
+                <li>Poskytovanie lokálnych meteo informácií v reálnom čase.</li>
+                <li>Správa používateľského konta (ak je vytvorené).</li>
+                <li>Zlepšovanie funkcií aplikácie a oprava technických chýb.</li>
+                <li>Zasielanie dôležitých upozornení na nebezpečné poveternostné javy.</li>
+            </ul>
+
+            <h2>3. Uchovávanie a bezpečnosť</h2>
+            <p>Vaše osobné údaje uchovávame len po dobu nevyhnutnú na poskytovanie služby. Napríklad štatistiky o používaní uchovávame maximálne <strong>24 mesiacov</strong>.</p>
+            <p>Využívame moderné šifrovacie protokoly (SSL/TLS), aby sme zabránili neoprávnenému prístupu k vašim informáciám.</p>
+
+            <h2>4. Vaše práva (GDPR)</h2>
+            <p>Ako používateľ máte právo na:</p>
+            <ul>
+                <li>Prístup k svojim údajom a ich prenosnosť.</li>
+                <li>Opravu nesprávnych informácií.</li>
+                <li>Úplné vymazanie údajov ("Právo na zabudnutie").</li>
+                <li>Odvolanie súhlasu so spracovaním polohy v nastaveniach zariadenia.</li>
+            </ul>
+
+            <div class="contact-box">
+                <p>Máte otázky ohľadom vašich údajov?</p>
+                <a href="mailto:richardsvicka6@gmail.com" class="btn">Napíšte nám e-mail</a>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 Meteo Počasie | Vytvorené s dôrazom na bezpečnosť
+        </footer>
+    </div>
+
+    <script>
+        // Jemná animácia pri skrolovaní
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('h2, .card, li').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "all 0.5s ease-out";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
