@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Radar Test - Bez Cache</title>
+    
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --app-bg: #2A3848; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; height: 100%; overflow: hidden; background: var(--app-bg); }
+        #mapa { position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; }
+        
+        /* Jednoduchá legenda pre vizuálny test */
+        .test-info {
+            position: absolute; top: 10px; left: 10px; z-index: 100;
+            background: rgba(0,0,0,0.7); color: white; padding: 10px;
+            border-radius: 8px; font-family: sans-serif; font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="test-info">
+        <b>REŽIM: BEZ CACHE</b><br>
+        Všetko sa sťahuje z internetu.
+    </div>
+
+    <div id="mapa"></div>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWV0ZW9wb2Nhc2llIiwiYSI6ImNtbXl0Y253NTAxNzQycnIyaDB2Z2oxZ3oifQ.qiyk6DYlFUz3XtSbsprVSw';
+        
+        const map = new mapboxgl.Map({
+            container: 'mapa',
+            style: 'mapbox://styles/mapbox/dark-v11',
+            center: [19.6, 48.7], 
+            zoom: 6,
+            attributionControl: false
+        });
+
+        // Automatické prispôsobenie veľkosti okna
+        const resizeObserver = new ResizeObserver(() => {
+            map.resize();
+        });
+        resizeObserver.observe(document.body);
+
+        // Simulácia načítania tvojich radarových PNG obrázkov
+        map.on('load', () => {
+            console.log("Mapa načítaná z netu.");
+            // Tu by sa pridávali tvoje vrstvy z cz1.helkor.eu:41152
+        });
+    </script>
+</body>
+</html>
