@@ -3,204 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meteo Počasie | Presná & Inteligentná Predpoveď</title>
+    <title>Cache Test Experiment</title>
     <style>
-        :root {
-            --primary: #3498db; 
-            --bg-start: #1a252f; 
-            --bg-end: #2c3e50;   
-            --text: #ffffff;
-            --text-muted: #bdc3c7;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --card-border: rgba(255, 255, 255, 0.1);
+        body { 
+            background: #2A3848; 
+            color: white; 
+            font-family: sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            margin: 0; 
+            padding: 20px; 
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        header {
-            margin-bottom: 60px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #ffffff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .tagline {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            border-color: rgba(52, 152, 219, 0.3);
-        }
-
-        .icon {
-            font-size: 2rem;
+        #status {
+            padding: 10px;
             margin-bottom: 20px;
-            color: var(--primary);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
         }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        .cta-section {
-            margin-top: 80px;
-            margin-bottom: 40px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 18px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-        }
-
-        .cta-button:hover {
-            background-color: #2980b9;
-            transform: scale(1.03);
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 30px 20px;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.5);
+        #box-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
             width: 100%;
-            text-align: center;
-            border-top: 1px solid var(--card-border);
-            background: rgba(0,0,0,0.1);
+            max-width: 400px;
         }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 40px 15px;
-            }
-            h1 {
-                font-size: 2.2rem;
-            }
-            .tagline {
-                font-size: 1.1rem;
-            }
-            .features {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .feature-card {
-                padding: 25px;
-            }
+        .box {
+            width: 60px;
+            height: 60px;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 10px;
+            /* Simulujeme sťahovanie cez sieťové obrázky */
+            background-size: cover;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Meteo Počasie</h1>
-        <p class="tagline">Rýchla, presná a inteligentná predpoveď navrhnutá pre váš deň.</p>
-    </header>
+    <h2>Test Rýchlosti Načítania</h2>
+    <div id="status">Režim: <b>Čakám na dáta...</b></div>
 
-    <div class="features">
-        <div class="feature-card">
-            <div class="icon">☔</div>
-            <h3>Inteligentné zrážky</h3>
-            <p>Pokročilý algoritmus analyzuje dáta a spresňuje pravdepodobnosť dažďa či sneženia pre vašu presnú polohu.</p>
+    <div id="box-container">
         </div>
 
-        <div class="feature-card">
-            <div class="icon">📅</div>
-            <h3>Cesta v čase</h3>
-            <p>Jedinečná funkcia historického porovnania. Pozrite si, aké bolo počasie pred rokom v ten istý deň.</p>
-        </div>
+    <script>
+        const container = document.getElementById('box-container');
+        const status = document.getElementById('status');
+        
+        // Funkcia na simuláciu sťahovania prvkov
+        function generateBoxes() {
+            // Použijeme náhodné obrázky z internetu, aby sme videli sťahovanie
+            for (let i = 1; i <= 50; i++) {
+                const box = document.createElement('div');
+                box.className = 'box';
+                // Každý štvorec je unikátny obrázok (vynúti sťahovanie z netu)
+                box.style.backgroundImage = `url('https://picsum.photos/100/100?random=${i}')`;
+                box.innerText = i;
+                container.appendChild(box);
+            }
+            status.innerHTML = 'Režim: <b>VŠETKO NAČÍTANÉ</b>';
+        }
 
-        <div class="feature-card">
-            <div class="icon">🍃</div>
-            <h3>Kvalita ovzdušia</h3>
-            <p>Integrovaný index kvality ovzdušia (AQI) pre vaše zdravie. Vždy viete, kedy je vzduch čistý.</p>
-        </div>
+        // Spustíme generovanie
+        generateBoxes();
 
-        <div class="feature-card">
-            <div class="icon">⚠️</div>
-            <h3>Meteorologické výstrahy</h3>
-            <p>Priame napojenie na oficiálne výstrahy pre Slovensko a Česko v reálnom čase. Buďte v bezpečí pred búrkami.</p>
-        </div>
-    </div>
-
-    <div class="cta-section">
-        <a href="TU_VLOZ_ODKAZ_NA_DAROVANIE" class="cta-button">Podporiť projekt</a>
-    </div>
-</div>
-
-<footer>
-    <p>Dáta poskytuje Open-Meteo.com</p>
-    <p style="margin-top: 5px;">Vyvinuté s ❤️</p>
-</footer>
-
+        // Registrácia Service Workera (iba ak ho tam potom pridáš)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').then(() => {
+                console.log('Worker je pripravený!');
+            });
+        }
+    </script>
 </body>
 </html>
